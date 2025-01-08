@@ -2,9 +2,6 @@
 import { ref } from 'vue'
 import axios from 'axios'
 
-
-
-
 const formData = ref({
   name: '',
   email: '',
@@ -12,13 +9,33 @@ const formData = ref({
 })
 
 const handleSubmit = async () => {
-  try {
-    const response = await axios.post('http://pwa.test/api/submit', formData.value)
-    console.log('Form submitted successfully:', response.data)
-  } catch (error) {
-    console.error('Error submitting form:', error)
+  if (navigator.onLine) {
+    try {
+      const response = await axios.post('http://pwa.test/api/submit', formData.value)
+      console.log('Form submitted successfully:', response.data)
+    } catch (error) {
+      console.error('Error submitting form:', error)
+    }
+  } else {
+    localStorage.setItem('formData', JSON.stringify(formData.value))
+    console.log('You are offline. Form data has been saved locally.')
   }
 }
+
+const resendData = async () => {
+  const savedData = localStorage.getItem('formData')
+  if (savedData) {
+    try {
+      const response = await axios.post('http://pwa.test/api/submit', JSON.parse(savedData))
+      console.log('Form submitted successfully:', response.data)
+      localStorage.removeItem('formData')
+    } catch (error) {
+      console.error('Error resending form data:', error)
+    }
+  }
+}
+
+window.addEventListener('online', resendData)
 </script>
 
 <template>
