@@ -1,12 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-import {registerRoute} from 'workbox-routing'
-import {staleWhileRevalidate} from 'workbox-strategies'
-import {CacheableResponsePlugin} from 'workbox-cacheable-response'
-import {ExpirationPlugin} from 'workbox-expiration'
 
-re
+
+
 
 const formData = ref({
   name: '',
