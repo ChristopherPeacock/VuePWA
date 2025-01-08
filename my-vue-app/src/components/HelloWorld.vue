@@ -2,6 +2,8 @@
 import { onMounted, ref } from 'vue'
 import axios  from 'axios'
 
+//axios workered 
+
 const fetchData = async () => {
   try {
     const response = await axios.get('http://pwa.test/')
