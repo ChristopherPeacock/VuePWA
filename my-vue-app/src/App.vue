@@ -4,6 +4,7 @@ import PWABadge from './components/PWABadge.vue'
 </script>
 
 <template>
+  
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/favicon.svg" class="logo" alt="FirePWA logo" />
