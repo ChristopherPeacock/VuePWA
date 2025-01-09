@@ -18,7 +18,7 @@ const handleSubmit = async () => {
     }
   } else {
     localStorage.setItem('formData', JSON.stringify(formData.value))
-    console.log('You are offline. Form data has been saved locally.')
+    alert('You are offline. Form data has been saved locally.')
   }
 }
 
